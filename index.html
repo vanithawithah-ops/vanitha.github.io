@@ -296,6 +296,35 @@ footer a:hover{color:var(--blue)}
 .mailline{margin-top:22px;font-size:16px;color:var(--mute)}.mailline a{font:600 19px "Plus Jakarta Sans",system-ui,sans-serif;color:var(--blue);text-decoration:none;overflow-wrap:anywhere}.mailline a:hover{text-decoration:underline}
 section.page{display:none}section.page.on{display:block}
 @media(prefers-reduced-motion:no-preference){.route{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 2.4s ease-out forwards}.route.r2{animation-delay:.25s}.route.r3{animation-delay:.5s}@keyframes draw{to{stroke-dashoffset:0}}}
+
+/* ---- mobile refinements ---- */
+.fine a{white-space:nowrap}
+@media(max-width:820px){
+ .scta{align-items:center!important}
+ .scta br,.cside+* br{display:none}
+ .fpic{margin-inline:auto;max-width:320px;padding:20px 0 20px 20px}
+ .fnd .portrait.tall{max-width:300px;margin-inline:auto}
+ .cart{height:170px;margin-top:8px}.cart img{width:90px;height:90px;top:10px}.cwave{height:130px}
+}
+@media(max-width:600px){
+ .sp2{padding:20px;gap:16px}
+ .sp2 .sph{grid-template-columns:48px 1fr;column-gap:14px;row-gap:12px;align-items:center}
+ .sp2 .icon{width:48px;height:48px;border-radius:12px}.sp2 .icon svg{width:24px;height:24px}
+ .sp2 h2{font-size:21px;margin:0}
+ .sp2 .sph>div:last-child{display:contents}
+ .sp2 .sph p{grid-column:1/-1;font-size:15.5px}
+ .sp2 ul{gap:9px;padding-top:14px}.sp2 li{font-size:15px;padding-left:18px}.sp2 li::before{width:7px;height:7px}
+ #pillarDetail{gap:14px}
+ .ec .hd{grid-template-columns:40px 1fr;gap:12px;margin-bottom:12px}
+ .ec .icon{width:40px;height:40px}.ec .icon svg{width:21px;height:21px}
+ .ec .tt{border-left:0;padding-left:0}.ec h3{font-size:17.5px}
+ .ec .sum{font-size:15.5px;margin-bottom:14px}
+ .metrics{grid-template-columns:1fr;gap:6px}
+ .metrics div{display:flex;align-items:baseline;gap:10px;padding:10px 12px}
+ .metrics b{font-size:20px}.metrics span{font-size:14px}
+ .scta{padding:24px 20px}.scta p br{display:none}
+ .cform{padding:20px}
+}
 </style>
 </head>
 <body>
@@ -502,7 +531,7 @@ section.page{display:none}section.page.on{display:block}
    </div>
   </div>
  </div>
- <div class="band" style="padding-top:0"><div class="wrap scta"><h2>Explore How We Can Work Together</h2><p>Let’s discuss how D-Pathways can help you create value,<br>drive change and build lasting capability.</p><a class="btn pri" href="mailto:contact@d-pathways.com?subject=Enquiry%20from%20the%20D-Pathways%20website">Schedule a Conversation<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:10px" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+ <div class="band" style="padding-top:0"><div class="wrap scta"><h2>Explore How We Can Work Together</h2><p>Let’s discuss how D-Pathways can help you create value, <br>drive change and build lasting capability.</p><a class="btn pri" href="mailto:contact@d-pathways.com?subject=Enquiry%20from%20the%20D-Pathways%20website">Schedule a Conversation<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:10px" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
 </section>
 </main>
 
