@@ -307,13 +307,15 @@ section.page{display:none}section.page.on{display:block}
  .cart{height:170px;margin-top:8px}.cart img{width:90px;height:90px;top:10px}.cwave{height:130px}
 }
 @media(max-width:600px){
- .sp2{padding:20px;gap:16px}
- .sp2 .sph{grid-template-columns:48px 1fr;column-gap:14px;row-gap:12px;align-items:center}
- .sp2 .icon{width:48px;height:48px;border-radius:12px}.sp2 .icon svg{width:24px;height:24px}
- .sp2 h2{font-size:21px;margin:0}
- .sp2 .sph>div:last-child{display:contents}
- .sp2 .sph p{grid-column:1/-1;font-size:15.5px}
- .sp2 ul{gap:9px;padding-top:14px}.sp2 li{font-size:15px;padding-left:18px}.sp2 li::before{width:7px;height:7px}
+ .sp2{padding:22px 20px;gap:0}
+ .sp2 .sph{display:block}
+ .sp2 .sph>div:last-child{display:block}
+ .sp2 .icon{width:46px;height:46px;border-radius:12px;margin:0 0 14px}.sp2 .icon svg{width:24px;height:24px}
+ .sp2 h2{font-size:21px;line-height:1.2;margin:0 0 8px}
+ .sp2 .sph p{font-size:15.5px;line-height:1.55;color:var(--mute)}
+ .sp2 ul{margin-top:18px;padding:16px 0 0;gap:10px}
+ .sp2 li{font-size:15px;line-height:1.45;padding-left:20px}
+ .sp2 li::before{width:7px;height:7px;top:.52em}
  #pillarDetail{gap:14px}
  .ec .hd{grid-template-columns:40px 1fr;gap:12px;margin-bottom:12px}
  .ec .icon{width:40px;height:40px}.ec .icon svg{width:21px;height:21px}
@@ -403,11 +405,10 @@ section.page{display:none}section.page.on{display:block}
    <div class="fnd" style="margin-top:8px">
    <div class="fpic"><img class="portrait" src="img/founder.jpg" alt="Vanitha Shankar, Founder of D-Pathways" width="640" height="640"></div>
    <div>
-    <h3 class="fh">A Founder-Led, Collaborative Practice</h3>
-    <p class="fl">D-Pathways is a collaborative practice helping organisations navigate business transformation, digital opportunities, AI adoption and human-centred innovation.</p>
-    <h3 class="fh" style="margin:28px 0 2px">Vanitha Shankar</h3>
-    <p class="role" style="margin-bottom:10px">Founder &amp; Lead Strategist</p>
-    <p class="fl">Vanitha is a strategist, designer and institution builder with over 22 years of experience across customer experience, digital transformation and institution building. She brings together business thinking, human-centred design and technology to help organisations navigate change and turn digital possibilities into meaningful outcomes.</p>
+    <p class="apsub" style="margin-top:0">Business thinking. Human-centred design. Technology that works.</p>
+    <p class="fl" style="margin-top:14px">D-Pathways helps organisations navigate business transformation, digital opportunities, AI adoption and human-centred innovation.</p>
+    <h3 class="fh" style="margin:26px 0 8px;color:var(--blue)">Vanitha Shankar</h3>
+    <p class="fl">Vanitha is a strategist, designer and institution builder with 22+ years of experience across customer experience and digital transformation. She brings business thinking, human-centred design and technology together to help organisations navigate change and create meaningful outcomes.</p>
     <div class="btns"><a class="btn sec" href="#about">Meet the Founder<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:10px" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
    </div>
    </div>
@@ -613,7 +614,7 @@ const work=[
  ['03. Digital Transformation for Business Growth','Growth-stage company · Energy sector','The Challenge','An established energy-sector business with multiple product streams and business units sought to improve operations and create a more connected customer journey from manufacturing to distribution.','Mapped existing business operations and customer journeys, identified opportunities for growth and improvement, developed potential digital pilots and shaped a roadmap for implementation.','A clearer growth proposition, tangible concepts to take forward and a defined digital pathway for scale.'],
  ['04. Digital, AI & UX Capability Building','Global organisations · National incubators · Deemed-to-be universities','The Need','Build digital, AI and UX capabilities and enable new ways of working across organisations and professional communities.','Designed and delivered digital, AI and UX capability-building programmes through specialist learning partners for large global organisations, and directly for national incubators and deemed-to-be universities.',null,[['15,000+','Learning hours delivered'],['300+','Hours of customised content'],['Thousands','Professionals enabled']]]
 ];
-const homeSum=[['bld','Defined the future product and experience vision, aligned stakeholders and translated it into customer journeys and experience designs.'],['screen','Strategic vision, experience direction and growth roadmap connecting experiences across business units and channels.'],['wind','Mapped operations and customer journeys, identified growth opportunities, and shaped digital pilots and an implementation roadmap.'],['team3','Digital, AI and UX capability-building programmes for global organisations, national incubators and deemed-to-be universities.']];
+const homeSum=[['bld','Future product and experience vision, aligning business, CX and digital teams.'],['screen','Strategic vision and growth roadmap for a connected customer experience.'],['wind','Digital pilots and a growth roadmap connecting operations and customer journeys.'],['team3','Digital, AI and UX capability programmes for organisations and institutions.']];
 $('engList').innerHTML=work.map(([t,c],n)=>`<div class="ec"><div class="hd">${svg(homeSum[n][0])}<div class="tt"><h3>${esc(t)}</h3><p class="ctx">${c}</p></div></div><p class="sum">${homeSum[n][1]}</p><a href="#work">View Case Study →</a></div>`).join('');
 $('engFull').innerHTML=work.map(([t,c,k,ch,d,i,m])=>`<article class="eng"><div class="in"><h3>${esc(t)}</h3><p class="ctx">${c}</p><dl><dt>${k}</dt><dd>${ch}</dd><dt>D-Pathways’ Contribution</dt><dd>${d}</dd><dt>Impact</dt><dd>${m?`<div class="metrics">${m.map(([a,b])=>`<div><b>${a}</b><span>${b}</span></div>`).join('')}</div>`:i}</dd></dl></div></article>`).join('');
 const cta=`<div class="wrap" style="text-align:center"><h2 style="max-width:22ch;margin-inline:auto">Let’s make technology work better for business and people.</h2><p class="lede" style="margin-inline:auto">Have a business challenge or an opportunity you would like to explore? Let’s talk.</p><div class="btns" style="justify-content:center"><a class="btn pri" href="mailto:contact@d-pathways.com?subject=Enquiry%20from%20the%20D-Pathways%20website">Start a Conversation</a></div></div>`;
