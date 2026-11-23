@@ -550,8 +550,9 @@ section.page{display:none}section.page.on{display:block}
     <label for="f-email"><span>Email <i>*</i></span><input id="f-email" name="email" type="email" autocomplete="email" placeholder="Your email address" required></label>
     <label for="f-msg"><span>How can we help? <i>*</i></span><textarea id="f-msg" name="message" placeholder="Tell us about your goals, challenge or idea" required></textarea></label>
     <div class="err" id="err" aria-live="polite"></div>
-    <div><button class="btn pri" type="submit">Send Message<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:10px" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
-    <div class="ok" id="ok" role="status">Your email app should now open with your message ready to send. Press Send there to deliver it. If nothing opened, please email contact@d-pathways.com directly.</div>
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div><button class="btn pri" type="submit" id="sendBtn">Send Message<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:10px" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    <div class="ok" id="ok" role="status">Thank you. Your message has been sent and we will get back to you shortly.</div>
    </form>
    <div class="cside">
     <div class="cinfo">
@@ -675,16 +676,22 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-jump]');if
 menuBtn.addEventListener('click',()=>{const o=links.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o)});
 addEventListener('hashchange',route);route();
 
-$('form').addEventListener('submit',e=>{e.preventDefault();const f=e.target,err=$('err');
+$('form').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,err=$('err'),btn=$('sendBtn');
  const miss=['f-name','f-email','f-msg'].filter(id=>!$(id).value.trim());
  if(miss.length){err.textContent='Please fill in your name, email address and how we can help.';$(miss[0]).focus();return}
  if(!$('f-email').checkValidity()){err.textContent='Please enter a valid email address.';$('f-email').focus();return}
+ if(f._honey.value)return;
  err.textContent='';
  const v=id=>$(id).value.trim();
- const body=`Name: ${v('f-name')}\nOrganisation: ${v('f-org')||'-'}\nEmail: ${v('f-email')}\n\n${v('f-msg')}`;
- const subj='Website enquiry from '+v('f-name');
- $('ok').style.display='block';
- location.href='mailto:contact@d-pathways.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);});
+ const label=btn.innerHTML;btn.disabled=true;btn.textContent='Sending…';
+ try{
+  const r=await fetch('https://formsubmit.co/ajax/contact@d-pathways.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+   body:JSON.stringify({name:v('f-name'),organisation:v('f-org')||'-',email:v('f-email'),message:v('f-msg'),_subject:'Website enquiry from '+v('f-name'),_replyto:v('f-email'),_template:'table',_captcha:'false'})});
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok||j.success===false||j.success==='false')throw new Error(j.message||'send failed');
+  f.reset();$('ok').style.display='block';btn.style.display='none';
+ }catch(x){err.textContent='Sorry, the message could not be sent. Please email contact@d-pathways.com directly.';btn.disabled=false;btn.innerHTML=label;}
+});
 }
 </script>
 </body>
